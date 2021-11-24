@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  background-image: linear-gradient(
+    hsl(180, 70%, 70%),
+    rgba(17, 2, 2, 0.158) 100%
+  );
+}
