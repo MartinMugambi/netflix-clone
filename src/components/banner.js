@@ -1,9 +1,9 @@
 import axios from './axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, forwardRef } from 'react';
 import request from './api_requests';
 import './banner.css';
 import TextTruncate from 'react-text-truncate';
-const Banner = () => {
+const Banner =  forwardRef(({},ref) => {
     const [movies, setMovies] = useState([]);
     const [seconds, setSeconds] = useState(0);
     useEffect(()=>{
@@ -23,9 +23,8 @@ const Banner = () => {
     
 
     const imageBaseUrl = `https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`;
-  console.log(movies);    
     return(
-        <header className="banner" style= {{
+        <header className="banner" ref= {ref}  style= {{
             backgroundImage: `linear-gradient(to right, hsl(180, 70%, 70%), rgba(17, 2, 2, 0.158)70%),url(${imageBaseUrl})`,
             backgroundSize: 'cover', 
             backgroundPosition: 'center center',
@@ -47,8 +46,9 @@ const Banner = () => {
 />
          </div>
         </header>
-    );
-}
+ 
+);
+});
 
 export default Banner;
 
