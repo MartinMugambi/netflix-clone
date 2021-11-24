@@ -6,7 +6,7 @@ const Movie = () =>{
 
     return(
         <div className= "movie">
-           <MovieSection title="Nextflix Original" fetchUrl= {request.fetchNetflixOriginals} isLarge = {true} />
+           <MovieSection title="NETFLIX ORIGINALS" fetchUrl= {request.fetchNetflixOriginals} isLarge = {true} />
            <MovieSection title="Trending Now" fetchUrl= {request.fetchTrendingMovies} />
            <MovieSection title="Top Rated" fetchUrl= {request.fetchTopRatedMovies} />
            <MovieSection title="Action Movies" fetchUrl= {request.fecthActionMovies} />

@@ -2,7 +2,9 @@
   padding: 5px;
   color: white;
 }
-
+.moviesection > h4 {
+  padding: 5px;
+}
 .moviesection__poster {
   display: flex;
   overflow-x: scroll;

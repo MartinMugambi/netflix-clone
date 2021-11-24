@@ -1,12 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 .App {
-  background-image: linear-gradient(
-    hsl(180, 70%, 70%),
-    rgba(17, 2, 2, 0.158) 100%
-  );
+  background-image: linear-gradient(hsla(180, 60%, 80%), hsl(180, 39%, 66%));
 }
