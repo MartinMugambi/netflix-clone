@@ -26,6 +26,28 @@ const Details = (props: Props) =>{
    const [actor, setActor] = useState<Actor[]>([])
 
    console.log(id);
+
+   useEffect(()=>{
+
+    const fetchActor  = async (url:string) =>{
+
+      const response  = await fetch(url)
+
+      const responseData = await response.json()
+
+      return responseData;
+  }
+
+  fetchActor(`http://api.themoviedb.org/3/movie/414906/casts?api_key=${API_KEY}`).then(response =>{
+   setActor(response.cast)
+    
+    
+  }).catch(error =>{
+    console.log(error);
+    
+  })
+
+  },[id])
    
     useEffect(()=>{
       
@@ -49,16 +71,7 @@ const Details = (props: Props) =>{
     },[id])
 
 
-    useEffect(()=>{
-    axios.get(`http://api.themoviedb.org/3/movie/${id}/casts?api_key=5d657d365f93f31013f78d331be5420e`).then(response =>{
-      console.log(response.data.cast);
-      setActor(response.data.cast)
-      
-    }).catch(error =>{
-       console.log(error.response);
-       
-    })
-    },[id])
+   
 
     console.log("Am actor", actor);
     
