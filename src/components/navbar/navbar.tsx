@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Logo from './nextflix-logo.png';
-import Avatar from './Netflix-avatar.png';
+import Logo from '../assets/nextflix-logo.png';
+import Avatar from '../assets/Netflix-avatar.png';
 import './navbar.css';
 const NavBar = () =>{
 
@@ -14,14 +14,14 @@ const NavBar = () =>{
           }
 
           return () =>{
-              window.removeEventListener('scroll');
+              //window.removeEventListener<scroll>('scroll');
           }
       })
     },[])
     return(
-        <div className= {`navbar ${show && 'navbar__color'}`}>
-          <img src = {Logo} alt="netflix__logo" className= "navbar__logo"/>
-          <img src= {Avatar} alt= "netflix_avatar" className="navbar__avatar" />
+        <div className= {`navbar ${show && 'navbar__color'}`}  data-testid="nav">
+          <img src = {Logo} alt="netflix__logo" className= "navbar__logo" data-testid="navbar-img"/>
+          <img src= {Avatar} alt= "netflix_avatar" className="navbar__avatar"  data-testid="navbar-img"/>
         </div>
     );
 }
