@@ -46,7 +46,7 @@ const Details = (props: Props) =>{
       
     })
 
-    },[])
+    },[id])
 
 
     useEffect(()=>{
@@ -58,7 +58,7 @@ const Details = (props: Props) =>{
        console.log(error.response);
        
     })
-    },[])
+    },[id])
 
     const {overview, backdrop_path,original_title} = data
 
@@ -90,7 +90,7 @@ const Details = (props: Props) =>{
 
     </header>
      
-    <h3>Series/Movies Actors</h3>
+    <h3>Series/Movie Actors</h3>
      <div className="details__actor">
        {actorList}
      </div>
