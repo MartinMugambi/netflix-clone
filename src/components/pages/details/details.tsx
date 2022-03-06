@@ -50,7 +50,7 @@ const Details = (props: Props) =>{
 
 
     useEffect(()=>{
-    axios.get(`http://api.themoviedb.org/3/movie/${id}/casts?api_key=${API_KEY}`).then(response =>{
+    axios.get(`http://api.themoviedb.org/3/movie/${id}/casts?api_key=5d657d365f93f31013f78d331be5420e`).then(response =>{
       console.log(response.data.cast);
       setActor(response.data.cast)
       
