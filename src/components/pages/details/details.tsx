@@ -38,7 +38,7 @@ const Details = (props: Props) =>{
       return responseData;
   }
 
-  fetchActor(`http://api.themoviedb.org/3/movie/414906/casts?api_key=${API_KEY}`).then(response =>{
+  fetchActor(`https://api.themoviedb.org/3/movie/414906/casts?api_key=${API_KEY}`).then(response =>{
    setActor(response.cast)
     
     
