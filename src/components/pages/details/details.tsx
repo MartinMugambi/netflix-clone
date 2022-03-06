@@ -60,6 +60,8 @@ const Details = (props: Props) =>{
     })
     },[id])
 
+    console.log("Am actor", actor);
+    
     const {overview, backdrop_path,original_title} = data
 
     console.log(overview,backdrop_path, original_title);
