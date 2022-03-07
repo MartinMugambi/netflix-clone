@@ -11,8 +11,8 @@ const Movie = (props: Props) =>{
 
     return(
         <div className= "movie">
-           <MovieSection title="NETFLIX ORIGINALS" fetchUrl= {request.fetchNetflixOriginals} isLarge = {true}  setId= {props.setId} />
-           <MovieSection title="Trending Now" fetchUrl= {request.fetchTrendingMovies} setId= {props.setId}    />
+           <MovieSection title="Trending Now" fetchUrl= {request.fetchTrendingMovies} setId= {props.setId} isLarge = {true}     />
+           <MovieSection title="NETFLIX ORIGINALS" fetchUrl= {request.fetchNetflixOriginals}  setId= {props.setId} />
            <MovieSection title="Top Rated" fetchUrl= {request.fetchTopRatedMovies} setId= {props.setId}   />
            <MovieSection title="Action Movies" fetchUrl= {request.fecthActionMovies} setId= {props.setId}   />
            <MovieSection title="Comedy Movies" fetchUrl= {request.fetchComedyMovies} setId= {props.setId}   />
