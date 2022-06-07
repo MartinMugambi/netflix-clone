@@ -7,20 +7,18 @@ import Details from './components/pages/details/details';
 export const BannerId = React.createContext<number | undefined>(undefined); 
 
 function App() {
-  const [id, setId] = useState<number>()
-  console.log("My id is", id);
   
   return (
-    <BannerId.Provider value={id}>
+    <>
       <Router>
     <div className="App">
       <Routes>
-        <Route path ='/' element ={<Home setId= {setId} />}></Route>
-        <Route path = '/movie' element = {<Details setId= {setId}/>}></Route>
+        <Route path ='/' element ={<Home />}></Route>
+        <Route path = '/movie' element = {<Details />}></Route>
       </Routes>
     </div>
     </Router>
-    </BannerId.Provider>
+    </>
   );
 }
 

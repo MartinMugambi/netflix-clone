@@ -2,10 +2,9 @@ import NavBar from "../../navbar/navbar";
 import FlipMove from "react-flip-move";
 import Banner from "../../banner/banner";
 import Movie from "../../movie/movies"
-interface Props{
-    setId: (id: number | undefined) => void
-}
-const Home = (props: Props) =>{
+ 
+
+const Home = () =>{
 
     return (
         <>
@@ -13,7 +12,7 @@ const Home = (props: Props) =>{
         <FlipMove />
         <Banner />
         <FlipMove />
-        <Movie  setId= {props.setId}/>
+        <Movie  />
         </>
     )
 }

@@ -1,55 +1,64 @@
 import React, { useEffect, useState } from "react";
-import axios from  "../axios"
-import './moviesection.css';
-import {Movie} from '../../types'
-import {useNavigate} from "react-router-dom"
+import axios from "../axios";
+import "./moviesection.css";
+import { Movie } from "../../types";
+import { useNavigate } from "react-router-dom";
+import { useMovie } from "../../context/contextProvider";
 
-interface Props{
-  title: string,
-  fetchUrl: string,
-  isLarge?: boolean,
-  setId: (id: number | undefined)=>void
+interface Props {
+  title: string;
+  fetchUrl: string;
+  isLarge?: boolean;
 }
 
+const MovieSection = (props: Props) => {
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-
-const MovieSection = (props: Props) =>{
-    const [movies, setMovies] = useState<Movie[]>([]);
-   
-    useEffect(()=>{
-      axios.get(props.fetchUrl).then(response => {
+  useEffect(() => {
+    axios
+      .get(props.fetchUrl)
+      .then((response) => {
         setMovies(response.data.results);
         console.log(response.data.results);
-        
-      }).catch(error =>{
-         console.log(error);
+      })
+      .catch((error) => {
+        console.log(error);
       });
+  }, [props.fetchUrl]);
 
+  const { setMovieId } = useMovie();
 
-    },[props.fetchUrl])
+  const imageBaseUrl: string = "https://image.tmdb.org/t/p/w500/";
 
-    const imageBaseUrl:string = 'https://image.tmdb.org/t/p/w500/';
-  
-     const navigate = useNavigate();   
-    
-    const findMovie = (id: number | undefined) =>{
-       props.setId(id)
-       navigate('/movie')
-    }
+  const navigate = useNavigate();
 
-   return(
-       <div className= 'moviesection '>
-         <h4 data-testid="heading">{props.title}</h4>
+  const findMovie = (id: number | undefined) => {
+    setMovieId(id);
+    navigate("/movie");
+  };
 
-         <div className= {`moviesection__poster ${props.isLarge && "moviesection_large"}`}>
-           {
-               movies.map(movie => <img src= {` ${imageBaseUrl}${props.isLarge ? movie.poster_path : movie.backdrop_path}` } alt ={movie.name} key= {movie.id} onClick={()=>findMovie(movie.id)} />)
-           }
-         </div>
+  return (
+    <div className="moviesection ">
+      <h4 data-testid="heading">{props.title}</h4>
 
-       </div>
-   );
-}
-
+      <div
+        className={`moviesection__poster ${
+          props.isLarge && "moviesection_large"
+        }`}
+      >
+        {movies.map((movie) => (
+          <img
+            src={` ${imageBaseUrl}${
+              props.isLarge ? movie.poster_path : movie.backdrop_path
+            }`}
+            alt={movie.name}
+            key={movie.id}
+            onClick={() => findMovie(movie.id)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default MovieSection;

@@ -6,10 +6,9 @@ import Movie from "../../movie/movies"
 import axios from "axios"
 import { API_KEY } from "../../../types"
 import Card from "../../card/card"
+import { useMovie } from "../../../context/contextProvider"
 
-interface Props{
-  setId: (id:number | undefined) =>void
-}
+
 
 interface Actor{
   id: number,
@@ -18,14 +17,13 @@ interface Actor{
   profile_path: string,
   character: string
 }
-const Details = (props: Props) =>{
+const Details = () =>{
 
-   const id = useContext(BannerId)
-
+ 
    const [data, setData] = useState<any>({})
    const [actor, setActor] = useState<Actor[]>([])
 
-   console.log(id);
+   const {movieId, setMovieId} = useMovie();
 
    useEffect(()=>{
 
@@ -38,7 +36,7 @@ const Details = (props: Props) =>{
       return responseData;
   }
 
-  fetchActor(`https://api.themoviedb.org/3/movie/${id}/casts?api_key=${API_KEY}`).then(response =>{
+  fetchActor(`https://api.themoviedb.org/3/movie/${movieId}/casts?api_key=${API_KEY}`).then(response =>{
    setActor(response.cast)
     
     
@@ -47,7 +45,7 @@ const Details = (props: Props) =>{
     
   })
 
-  },[id])
+  },[movieId])
    
     useEffect(()=>{
       
@@ -60,7 +58,7 @@ const Details = (props: Props) =>{
         return responseData;
     }
 
-    fetchMovie(`https://api.themoviedb.org/3/movie/${id}?api_key=5d657d365f93f31013f78d331be5420e&language=en-US&page=1&include_adult=false`).then(response =>{
+    fetchMovie(`https://api.themoviedb.org/3/movie/${movieId}?api_key=5d657d365f93f31013f78d331be5420e&language=en-US&page=1&include_adult=false`).then(response =>{
       setData(response)
       
     }).catch(error =>{
@@ -68,13 +66,9 @@ const Details = (props: Props) =>{
       
     })
 
-    },[id])
+    },[movieId])
 
 
-   
-
-    console.log("Am actor", actor);
-    
     const {overview, backdrop_path,original_title} = data
 
     console.log(overview,backdrop_path, original_title);
