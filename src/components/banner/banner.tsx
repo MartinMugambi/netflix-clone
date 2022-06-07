@@ -1,16 +1,12 @@
 import axios from "../axios";
-import React, { useEffect, useState, forwardRef } from "react";
+import { useEffect, useState, forwardRef } from "react";
 import { request, Movie } from "../../types";
 import "./banner.css";
 import TextTruncate from "react-text-truncate";
 import { useMovie } from "../../context/contextProvider";
 
 const Banner = forwardRef(({}, ref: any) => {
-  const [movies, setMovies] = useState<Movie>();
-  const [seconds, setSeconds] = useState<number>(0);
- 
-  const {movieId} = useMovie();
-
+  const { movieId, movies, setMovies, seconds, setSeconds } = useMovie();
 
   useEffect(() => {
     axios.get(request.fetchNetflixOriginals).then((response) => {
@@ -22,14 +18,12 @@ const Banner = forwardRef(({}, ref: any) => {
     });
 
     const interval = setInterval(() => {
-      if (seconds === 2) setSeconds((seconds) => (seconds = 0));
-      else setSeconds((seconds) => seconds + 1);
-      setMovies((movies) => movies);
+      if (seconds === 2) setSeconds((seconds: number) => (seconds = 0));
+      else setSeconds((seconds: number) => seconds + 1);
+      setMovies((movies: Movie[]) => movies);
     }, 6000);
     return () => clearInterval(interval);
   }, [seconds]);
-
- 
 
   const imageBaseUrl: string = `https://image.tmdb.org/t/p/original/${movies?.backdrop_path}`;
 
