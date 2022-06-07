@@ -1,9 +1,5 @@
-import { useEffect, useContext, useState } from "react";
-import Banner from "../../banner/banner";
-import { BannerId } from "../../../App";
+import { useEffect, useState } from "react";
 import "./details.css";
-import Movie from "../../movie/movies";
-import axios from "axios";
 import { API_KEY } from "../../../types";
 import Card from "../../card/card";
 import { useMovie } from "../../../context/contextProvider";
@@ -16,7 +12,7 @@ interface Actor {
   character: string;
 }
 const Details = () => {
-  const [data, setData] = useState<any>({});
+   const [data, setData] = useState<any>({});
   const [actor, setActor] = useState<Actor[]>([]);
 
   const { movieId, setMovieId } = useMovie();
