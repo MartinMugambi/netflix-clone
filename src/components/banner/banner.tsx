@@ -1,6 +1,5 @@
 import axios from "../axios";
-import React, { useEffect, useState, forwardRef, useContext } from "react";
-import { BannerId } from "../../App";
+import React, { useEffect, useState, forwardRef } from "react";
 import { request, Movie } from "../../types";
 import "./banner.css";
 import TextTruncate from "react-text-truncate";
